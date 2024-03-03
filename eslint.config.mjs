@@ -35,6 +35,7 @@ const config = [
       },
     },
     rules: {
+      "import/prefer-default-export": "off",
       "react/function-component-definition": ["error", { namedComponents: "arrow-function" }],
     },
   },
