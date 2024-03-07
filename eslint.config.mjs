@@ -40,9 +40,11 @@ const config = [
       "import/order": [
         "error",
         {
-          groups: ["index", "sibling", "parent", "internal", "external", "builtin", "object", "type"],
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+          "newlines-between": "always",
         },
       ],
+      "import/prefer-default-export": "off",
       "react/function-component-definition": ["error", { namedComponents: "arrow-function" }],
     },
     settings: {
