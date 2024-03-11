@@ -40,7 +40,7 @@ const config = [
       "import/order": [
         "error",
         {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+          groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index", "object"],
           "newlines-between": "always",
         },
       ],
