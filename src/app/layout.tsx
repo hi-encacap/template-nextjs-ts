@@ -1,12 +1,10 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
-import { notFound } from "next/navigation";
 import { ReactNode, memo } from "react";
 
 import type { Metadata } from "next";
 
 import { configService } from "@/services/server";
-import { appConfig } from "@/utils/config";
 import "../styles/global.scss";
 
 import Provider from "./provider";
@@ -14,19 +12,20 @@ import Provider from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { title } = await configService.getBaseConfigs();
+  const { title, favicon } = await configService.getBaseConfigs();
 
   return {
     title: {
       default: title,
       template: `%s | ${title}`,
     },
+    icons: {
+      icon: favicon,
+    },
   };
 };
 
 const RootLayout = ({ children, params: { locale } }: Readonly<{ children: ReactNode } & BasePageProps>) => {
-  if (!appConfig.locales.includes(locale)) notFound();
-
   const messages = useMessages();
 
   return (
