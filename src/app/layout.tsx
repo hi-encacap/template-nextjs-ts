@@ -1,5 +1,5 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { Inter } from "next/font/google";
+import { Be_Vietnam_Pro as BeVietnamPro } from "next/font/google";
 import { ReactNode, memo } from "react";
 
 import type { Metadata } from "next";
@@ -9,7 +9,11 @@ import "../styles/global.scss";
 
 import Provider from "./provider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-be-vietnam-pro" });
+const beVietnamPro = BeVietnamPro({
+  subsets: ["latin"],
+  variable: "--font-be-vietnam-pro",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { title, favicon } = await configService.getBaseConfigs();
@@ -29,7 +33,7 @@ const RootLayout = ({ children, params: { locale } }: Readonly<{ children: React
   const messages = useMessages();
 
   return (
-    <html className={inter.variable} lang={locale}>
+    <html className={beVietnamPro.variable} lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Provider>{children}</Provider>
