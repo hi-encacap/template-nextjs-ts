@@ -9,7 +9,7 @@ import "../styles/global.scss";
 
 import Provider from "./provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-be-vietnam-pro" });
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { title, favicon } = await configService.getBaseConfigs();
@@ -29,8 +29,8 @@ const RootLayout = ({ children, params: { locale } }: Readonly<{ children: React
   const messages = useMessages();
 
   return (
-    <html lang={locale}>
-      <body className={inter.className}>
+    <html className={inter.variable} lang={locale}>
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Provider>{children}</Provider>
         </NextIntlClientProvider>
