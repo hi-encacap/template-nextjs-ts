@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/libs/i18n.ts");
+
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["pino", "pino-pretty"],
@@ -8,7 +12,7 @@ const nextConfig = {
 };
 
 export default withSentryConfig(
-  nextConfig,
+  withNextIntl(nextConfig),
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
