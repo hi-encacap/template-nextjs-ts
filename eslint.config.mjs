@@ -1,11 +1,12 @@
 /** @type {import('eslint').Linter.FlatConfig[]} */
 
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-import eslint from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslint from "@eslint/js";
+import parser from "@typescript-eslint/parser";
+import esimport from "eslint-plugin-import";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import path from "path";
 import { fileURLToPath } from "url";
-import parser from "@typescript-eslint/parser";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,8 +36,24 @@ const config = [
       },
     },
     rules: {
+      ...esimport.configs["recommended"].rules,
+      "import/order": [
+        "error",
+        {
+          groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index", "object"],
+          "newlines-between": "always",
+        },
+      ],
+      "import/prefer-default-export": "off",
       "react/function-component-definition": ["error", { namedComponents: "arrow-function" }],
     },
+    settings: {
+      "import/resolver": {
+        typescript: true,
+        node: true,
+      },
+    },
+    plugins: { import: esimport },
   },
   {
     ignores: [".next/*", "node_modules/*", "*.config.*"],
