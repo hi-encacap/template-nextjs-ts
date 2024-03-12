@@ -1,5 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 
+let browserQueryClient: QueryClient | undefined;
+
 const makeQueryClient = () => {
   return new QueryClient({
     defaultOptions: {
@@ -13,8 +15,6 @@ const makeQueryClient = () => {
 };
 
 const getQueryClient = () => {
-  let browserQueryClient: QueryClient | undefined;
-
   if (typeof window === "undefined") {
     // Server: always make a new query client
     return makeQueryClient();
