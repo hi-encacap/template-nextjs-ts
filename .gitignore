@@ -12,6 +12,8 @@
 # next.js
 /.next/
 /out/
+/public/robots.txt
+/public/sitemap*.xml
 
 # production
 /build
@@ -37,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Sentry Config File
+.sentryclirc
+
+# Only tracking the ./src/locales/en-{us,US}.json files
+/src/locales
+!/src/locales/en-US.json
