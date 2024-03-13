@@ -18,9 +18,9 @@ const LocaleLayout = ({
   children,
   params: { locale },
 }: Readonly<{ children: ReactNode }> & BasePageProps) => {
-  if (!appConfig.locales.includes(locale)) notFound();
-
   unstable_setRequestLocale(locale);
+
+  if (!appConfig.locales.includes(locale)) notFound();
 
   const messages = useMessages();
 
