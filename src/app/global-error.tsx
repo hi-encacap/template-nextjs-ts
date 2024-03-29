@@ -9,9 +9,13 @@ interface GlobalErrorProps {
 }
 
 const GlobalError = ({ error }: GlobalErrorProps) => {
+  const isDev = process.env.NODE_ENV === "development";
+
   useEffect(() => {
+    if (isDev) return;
+
     Sentry.captureException(error);
-  }, [error]);
+  }, [error, isDev]);
 
   return (
     <html lang="en">
