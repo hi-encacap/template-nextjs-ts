@@ -8,7 +8,7 @@ import { memo } from "react";
 import { QueryKey } from "@/constants/query-key";
 import { configService } from "@/services/server";
 
-import LanguageSelector from "../../components/LanguageSelector";
+import LanguageSelector from "./LanguageSelector";
 
 const Home = () => {
   const { data, isError } = useQuery({

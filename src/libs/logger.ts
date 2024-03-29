@@ -1,4 +1,5 @@
 import pino, { LoggerOptions, TransportTargetOptions } from "pino";
+
 import { env } from "./env";
 
 const logtailSourceToken = env.NEXT_APP_LOGTAIL_SOURCE_TOKEN;

@@ -1,2 +1,2 @@
-export * as env from "./env";
-export * as logger from "./logger";
+export { env } from "./env";
+export { logger } from "./logger";
